@@ -1,5 +1,5 @@
 import React from "react";
-import TextInput from "./TextInput";
+import TextInput from "./ui/TextInput";
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 
 type Props = {};
