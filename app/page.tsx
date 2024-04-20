@@ -6,17 +6,17 @@ import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 
 export default function Home() {
   return (
-    <>
+    <div className="flex flex-col justify-between w-screen h-screen">
       <header></header>
 
-      <main className="flex flex-col items-center justify-center p-6 z-10 max-w-3xl w-full font-mono text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        {/* <LogoForm /> */}
+      <main className="flex flex-col items-center justify-center gap-10 divide-y divide-slate-500 px-10 py-20 w-full h-full font-mono text-sm lg:flex-row lg:divide-x lg:divide-y-0">
+        <LogoForm />
         <LogoResult />
       </main>
 
       <footer>
         <Footer />
       </footer>
-    </>
+    </div>
   );
 }

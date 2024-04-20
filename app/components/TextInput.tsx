@@ -7,7 +7,7 @@ type Props = {
 
 const TextInput = (props: Props) => {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="w-full flex flex-col gap-2">
       <label htmlFor="logo-name">{props.label}</label>
       <input
         type="text"
