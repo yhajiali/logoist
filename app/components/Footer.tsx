@@ -12,7 +12,7 @@ const Footer = (props: Props) => {
         <span>
           Built by{" "}
           <a
-            className="text-blue-400"
+            className="text-blue-400 underline"
             href="http://linkedin.com/in/yhajiali"
             target="_blank"
             rel="nooppener noreferrer"
@@ -21,7 +21,7 @@ const Footer = (props: Props) => {
           </a>
           ,{" "}
           <a
-            className="text-blue-400"
+            className="text-blue-400 underline"
             href="https://www.linkedin.com/in/aleksandr-balkhanov-56221b289/"
             target="_blank"
             rel="nooppener noreferrer"
@@ -30,8 +30,8 @@ const Footer = (props: Props) => {
           </a>{" "}
           and{" "}
           <a
-            className="text-blue-400"
-            href="http://linkedin.com/in/yhajiali"
+            className="text-blue-400 underline"
+            href="http://linkedin.com/in/"
             target="_blank"
             rel="nooppener noreferrer"
           >
