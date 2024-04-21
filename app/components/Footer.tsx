@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 // Icons
 import { LuMoon, LuGithub, LuSun } from "react-icons/lu";
 
@@ -12,15 +12,6 @@ const Footer = (props: Props) => {
     : "light";
 
   const [themeMode, setThemeMode] = useState(userThemeMode);
-
-  // Function to update the system theme preference
-  const updateSystemThemePreference = (mode: string) => {
-    if (mode === "dark") {
-      document.documentElement.classList.add("dark-mode");
-    } else {
-      document.documentElement.classList.remove("dark-mode");
-    }
-  };
 
   return (
     <div className="px-4 py-8 w-full flex flex-col gap-4 justify-center items-center border border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:bg-gray-200 lg:dark:bg-zinc-800/30">
@@ -69,13 +60,11 @@ const Footer = (props: Props) => {
         <div className="flex justify-center divide-x divide-gray-500 dark:divide-white">
           <button
             className="px-2"
-            onClick={() => {
+            onClick={() =>
               themeMode === "dark"
                 ? setThemeMode("light")
-                : setThemeMode("dark");
-
-              updateSystemThemePreference(themeMode);
-            }}
+                : setThemeMode("dark")
+            }
           >
             {themeMode === "dark" ? (
               <LuSun className="size-6 hover:fill-white hover:scale-110" />
