@@ -6,15 +6,15 @@ type Props = {
   name: string;
 };
 
-const TextInput = (props: Props) => {
+const TextInput = ({ label, name, placeholder }: Props) => {
   return (
-    <div className="w-full flex flex-col gap-2">
-      <label htmlFor={props.name}>{props.label}</label>
+    <div className="w-full flex flex-col gap-2 animate-fadeUp">
+      <label htmlFor={name}>{label}</label>
       <input
         type="text"
-        className="outline-none bg-transparent border-x-0 border-t-0 border-2 border-gray-600 w-full py-2 focus:border-blue-400 transition-all duration-300"
-        id={props.name}
-        placeholder={props.placeholder}
+        className="outline-none bg-transparent border-x-0 border-t-0 border-2 dark:border-gray-700 w-full py-2 focus:border-blue-400 transition-all duration-300"
+        id={name}
+        placeholder={placeholder}
       />
     </div>
   );

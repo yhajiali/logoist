@@ -1,11 +1,11 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
 // IMPORTANT! Set the runtime to edge
-export const runtime = 'edge';
+export const runtime = "edge";
 
 export async function POST(req: Request, res: Response) {
   // Extract the `prompt` from the body of the request
-  console.log('req.body:', req.body);
+  console.log("req.body:", req.body);
   const { prompt } = await req.json();
 
   try {
@@ -17,24 +17,29 @@ export async function POST(req: Request, res: Response) {
       },
       body: JSON.stringify({
         // See https://replicate.com/mejiabrayan/logoai
-        version: "67ed00e8999fecd32035074fa0f2e9a31ee03b57a8415e6a5e2f93a242ddd8d2",
+        version:
+          "67ed00e8999fecd32035074fa0f2e9a31ee03b57a8415e6a5e2f93a242ddd8d2",
         input: { prompt: prompt },
       }),
     });
 
     if (response.status !== 201) {
       let error = await response.json();
-      throw new Error(`HTTP error! status: ${response.status} | detail: ${error.detail}`);
+      throw new Error(
+        `HTTP error! status: ${response.status} | detail: ${error.detail}`
+      );
     }
 
     let prediction = await response.json();
-    console.log('first prediction:', prediction);
+    console.log("first prediction:", prediction);
 
     while (
       prediction.status !== "succeeded" &&
       prediction.status !== "failed"
     ) {
-      await new Promise(resolve => { setTimeout(resolve, 1000); });
+      await new Promise((resolve) => {
+        setTimeout(resolve, 1000);
+      });
       try {
         const response = await fetch(
           "https://api.replicate.com/v1/predictions/" + prediction.id,
@@ -47,11 +52,13 @@ export async function POST(req: Request, res: Response) {
         );
         if (response.status !== 200) {
           let error = await response.json();
-          throw new Error(`HTTP error! status: ${response.status} | detail: ${error.detail}`);
+          throw new Error(
+            `HTTP error! status: ${response.status} | detail: ${error.detail}`
+          );
         }
-  
+
         prediction = await response.json();
-        console.log('loop prediction:', prediction);
+        console.log("loop prediction:", prediction);
       } catch (error) {
         console.log(error);
       }
@@ -62,6 +69,6 @@ export async function POST(req: Request, res: Response) {
     console.error(error);
     return new Response(error?.message || error?.toString(), {
       status: 500,
-    })
+    });
   }
-};
+}

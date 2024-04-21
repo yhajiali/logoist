@@ -1,18 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // Icons
-import { LuMoon, LuGithub } from "react-icons/lu";
+import { LuMoon, LuGithub, LuSun } from "react-icons/lu";
 
 type Props = {};
 
 const Footer = (props: Props) => {
+  // Check the user's theme mode
+  const userThemeMode = window.matchMedia("(prefers-color-scheme: dark)")
+    .matches
+    ? "dark"
+    : "light";
+
+  const [themeMode, setThemeMode] = useState(userThemeMode);
+
+  // Function to update the system theme preference
+  const updateSystemThemePreference = (mode: string) => {
+    if (mode === "dark") {
+      document.documentElement.classList.add("dark-mode");
+    } else {
+      document.documentElement.classList.remove("dark-mode");
+    }
+  };
+
   return (
     <div className="px-4 py-8 w-full flex flex-col gap-4 justify-center items-center border border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:bg-gray-200 lg:dark:bg-zinc-800/30">
       {/* Authors */}
-      <div className="w-full max-w-7xl flex justify-between font-mono text-sm">
+      <div className="w-full max-w-7xl flex flex-col gap-4 justify-between text-center lg:flex-row font-mono text-sm">
         <span>
           Built by{" "}
           <a
-            className="text-blue-400 underline"
+            className="text-blue-400 underline hover:text-blue-300"
             href="http://linkedin.com/in/yhajiali"
             target="_blank"
             rel="nooppener noreferrer"
@@ -21,27 +38,50 @@ const Footer = (props: Props) => {
           </a>
           ,{" "}
           <a
-            className="text-blue-400 underline"
+            className="text-blue-400 underline hover:text-blue-300"
             href="https://www.linkedin.com/in/aleksandr-balkhanov-56221b289/"
             target="_blank"
             rel="nooppener noreferrer"
           >
             Alexsandr
+          </a>
+          ,{" "}
+          <a
+            className="text-blue-400 underline hover:text-blue-300"
+            href="https://www.linkedin.com/in/elberd-galaiev-8a81351b2/"
+            target="_blank"
+            rel="nooppener noreferrer"
+          >
+            Elberd
           </a>{" "}
           and{" "}
           <a
-            className="text-blue-400 underline"
+            className="text-blue-400 underline hover:text-blue-300"
             href="http://linkedin.com/in/"
             target="_blank"
             rel="nooppener noreferrer"
           >
-            Nikko
+            Nicholas
           </a>
         </span>
 
-        <div className="flex justify-between divide-x">
-          <button className="px-2">
-            <LuMoon className="size-6 hover:fill-white hover:scale-110" />
+        {/* Buttons */}
+        <div className="flex justify-center divide-x divide-gray-500 dark:divide-white">
+          <button
+            className="px-2"
+            onClick={() => {
+              themeMode === "dark"
+                ? setThemeMode("light")
+                : setThemeMode("dark");
+
+              updateSystemThemePreference(themeMode);
+            }}
+          >
+            {themeMode === "dark" ? (
+              <LuSun className="size-6 hover:fill-white hover:scale-110" />
+            ) : (
+              <LuMoon className="size-6 hover:fill-white hover:scale-110" />
+            )}
           </button>
           <a
             href="https://github.com/yhajiali/logoai"
@@ -55,8 +95,8 @@ const Footer = (props: Props) => {
       </div>
 
       {/* Copyright */}
-      <div className="border-t border-gray-700 pt-3 flex justify-center max-w-7xl w-full dark:border-neutral-500 text-gray-200 font-mono text-sm">
-        <span>&copy;2024 Name</span>
+      <div className="border-t border-gray-700 pt-3 flex justify-center max-w-7xl w-full dark:border-neutral-500 dark:text-gray-200 font-mono text-sm text-center">
+        <span>&copy;{new Date().getFullYear()} LogoAI</span>
       </div>
     </div>
   );
