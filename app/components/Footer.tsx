@@ -1,17 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // Icons
 import { LuMoon, LuGithub, LuSun } from "react-icons/lu";
 
 type Props = {};
 
 const Footer = (props: Props) => {
-  // Check the user's theme mode
-  const userThemeMode = window.matchMedia("(prefers-color-scheme: dark)")
-    .matches
-    ? "dark"
-    : "light";
-
-  const [themeMode, setThemeMode] = useState(userThemeMode);
+  const [themeMode, setThemeMode] = useState("dark");
 
   return (
     <div className="px-4 py-8 w-full flex flex-col gap-4 justify-center items-center border border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:bg-gray-200 lg:dark:bg-zinc-800/30">
