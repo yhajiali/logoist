@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TextInput from "./ui/TextInput";
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 import RadioInput from "./ui/RadioInput";
@@ -10,22 +10,38 @@ type Props = {
 };
 
 const LogoForm = (props: Props) => {
+  const [logoName, setLogoName] = useState("Logo Name");
+  const [inputValue, setInputValue] = useState("Logo Name");
+
+  useEffect(() => {
+    setLogoName(inputValue);
+  }, [logoName]);
   return (
     <form className="w-full max-w-3xl h-full flex flex-col items-center justify-center gap-6">
       <TextInput
         label="Enter Your Logo Name"
         placeholder="Logo Name"
         name="logo-name"
+        setInputValue={setInputValue}
+      />
+      <TextInput
+        label="Tell us a bit about your logo"
+        placeholder="Logo Description"
+        name="logo-description"
+        textarea
       />
       <div className="w-full flex flex-col gap-6">
         <label htmlFor={"test"} className="animate-fadeUp">
           Choose a Logo Style
         </label>
         <div className="flex items-center justify-evenly gap-4 flex-wrap sm:justify-normal">
-          <RadioInput delay="600ms" />
-          <RadioInput delay="700ms" />
+          <RadioInput delay="600ms" logoName={inputValue} />
+          <RadioInput
+            delay="700ms"
+            logoName={inputValue}
+            flexDirection="flex-col"
+          />
           <RadioInput delay="900ms" />
-          <RadioInput delay="1100ms" />
         </div>
       </div>
 
