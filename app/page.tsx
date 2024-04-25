@@ -33,7 +33,7 @@ export default function Home() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          prompt: `Logo design for a coffee shop. Make sure to surround the logo with fire.`,
+          prompt: { logoName: "Yusi", style: 1 },
         }),
         // body: JSON.stringify({ prompt: `${prompt}` })
       });
