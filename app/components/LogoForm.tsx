@@ -10,7 +10,7 @@ type Props = {
 };
 
 const LogoForm = (props: Props) => {
-  const [logoName, setLogoName] = useState("Logo Name");
+  const [logoName, setLogoName] = useState("");
   const [inputValue, setInputValue] = useState("Logo Name");
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const LogoForm = (props: Props) => {
         setInputValue={setInputValue}
       />
       <TextInput
-        label="Tell us a bit about your logo"
+        label="Tell us a bit about your Brand"
         placeholder="Logo Description"
         name="logo-description"
         textarea
@@ -41,7 +41,7 @@ const LogoForm = (props: Props) => {
             logoName={inputValue}
             flexDirection="flex-col"
           />
-          <RadioInput delay="900ms" />
+          <RadioInput delay="900ms" icon />
         </div>
       </div>
 

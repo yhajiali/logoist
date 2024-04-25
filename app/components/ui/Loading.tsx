@@ -7,7 +7,7 @@ type Props = {
 const Loading = (props: Props) => {
   return (
     <div className="w-full max-w-3xl h-full flex flex-col gap-4 justify-center items-center animate-slide-in">
-      <div className="size-32 rounded-full border-2 border-r-blue-400 animate-spin"></div>
+      <div className="size-32 rounded-full border-2 border-gray-700 border-r-blue-400 animate-spin"></div>
       <span className="text-blue-400">{props.message}</span>
     </div>
   );
