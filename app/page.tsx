@@ -52,9 +52,15 @@ export default function Home() {
       <header className=""></header>
 
       <main className="flex flex-col items-center justify-center gap-10 divide-y divide-gray-700 px-10 py-20 w-full h-full font-mono text-sm lg:flex-row lg:divide-x lg:divide-y-0">
-        <LogoForm handleSubmit={handleSubmit} />
+        {!showLogoResult ? (
+          <LogoForm handleSubmit={handleSubmit} />
+        ) : (
+          <LogoResult
+            imageSrc={imageUrl}
+            setShowLogoResult={setShowLogoResult}
+          />
+        )}
         {loading && <Loading message="Generating Logo..." />}
-        {showLogoResult && <LogoResult imageSrc={imageUrl} />}
 
         {/* Display error below logo container */}
         {/* {error && <p className={styles.error}>{error}</p>} */}
