@@ -79,7 +79,7 @@ const Footer = (props: Props) => {
 
       {/* Copyright */}
       <div className="border-t border-gray-700 pt-3 flex justify-center max-w-7xl w-full dark:border-neutral-500 dark:text-gray-200 font-mono text-sm text-center">
-        <span>&copy;{new Date().getFullYear()} LogoAI</span>
+        <b> LogoAI &copy; {new Date().getFullYear()}</b>
       </div>
     </div>
   );

@@ -15,6 +15,7 @@ const TextInput = ({ label, name, placeholder }: Props) => {
         className="outline-none bg-transparent border-x-0 border-t-0 border-2 dark:border-gray-700 w-full py-2 focus:border-blue-400 transition-all duration-300"
         id={name}
         placeholder={placeholder}
+        required
       />
     </div>
   );

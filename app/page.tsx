@@ -11,12 +11,6 @@ export default function Home() {
   const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
-    // Reset state upon component mount (page refresh)
-    setShowLogoResult(false);
-    setLoading(false);
-  }, []);
-
-  useEffect(() => {
     if (imageUrl) {
       setLoading(false);
       setShowLogoResult(true);
@@ -61,6 +55,9 @@ export default function Home() {
         <LogoForm handleSubmit={handleSubmit} />
         {loading && <Loading message="Generating Logo..." />}
         {showLogoResult && <LogoResult imageSrc={imageUrl} />}
+
+        {/* Display error below logo container */}
+        {/* {error && <p className={styles.error}>{error}</p>} */}
       </main>
 
       <footer>
