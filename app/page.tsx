@@ -16,10 +16,7 @@ export default function Home() {
       setLoading(false);
       setShowLogoResult(true);
     }
-    if (showLogoForm) {
-      setShowLogoResult(false);
-    }
-  }, [imageUrl, showLogoForm]);
+  }, [imageUrl]);
 
   function handleSubmit() {
     setImageUrl("");
@@ -63,7 +60,7 @@ export default function Home() {
         {showLogoForm && !showLogoResult && (
           <LogoForm handleSubmit={handleSubmit} />
         )}
-        {showLogoResult && !loading ? (
+        {showLogoResult && !loading && !showLogoForm ? (
           <LogoResult
             imageSrc={imageUrl}
             setShowLogoForm={setShowLogoForm}
