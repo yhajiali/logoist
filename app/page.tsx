@@ -18,8 +18,6 @@ export default function Home() {
     }
     if (showLogoForm) {
       setShowLogoResult(false);
-    } else if (showLogoResult) {
-      setShowLogoForm(false);
     }
   }, [imageUrl, showLogoForm]);
 
@@ -27,7 +25,6 @@ export default function Home() {
     setImageUrl("");
     console.log("handleSubmit");
     setLoading(true);
-    setShowLogoResult(false);
     getImageData();
   }
 
@@ -63,15 +60,18 @@ export default function Home() {
       <header className=""></header>
 
       <main className="flex flex-col items-center justify-center gap-10 divide-gray-700 px-10 py-20 w-full h-full font-mono text-sm lg:flex-row lg:divide-x lg:divide-y-0">
-        {showLogoForm && <LogoForm handleSubmit={handleSubmit} />}
-        {showLogoResult && (
+        {showLogoForm && !showLogoResult && (
+          <LogoForm handleSubmit={handleSubmit} />
+        )}
+        {showLogoResult && !loading ? (
           <LogoResult
             imageSrc={imageUrl}
             setShowLogoForm={setShowLogoForm}
             handleSumbit={handleSubmit}
           />
+        ) : (
+          loading && <Loading message="Generating Logo..." />
         )}
-        {loading && <Loading message="Generating Logo..." />}
 
         {/* Display error below logo container */}
         {/* {error && <p className={styles.error}>{error}</p>} */}
