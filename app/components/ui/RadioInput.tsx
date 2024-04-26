@@ -17,6 +17,7 @@ const RadioInput = ({
   logoName,
   onInputChange,
   styleOption,
+  icon,
 }: Props) => {
   const [clicked, setClicked] = useState(false);
 
@@ -36,7 +37,9 @@ const RadioInput = ({
         onChange={() => (clicked ? setClicked(false) : setClicked(true))}
       />
       <Squares2X2Icon className="size-5" />
-      <span className="text-sm font-semibold">{logoName || "Logo Name"}</span>
+      <span className="text-sm font-semibold">
+        {!icon && (logoName || "Logo Name")}
+      </span>
     </label>
   );
 };
