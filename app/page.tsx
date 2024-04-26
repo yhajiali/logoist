@@ -12,14 +12,14 @@ export default function Home() {
   const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
+    if (imageUrl) {
+      setLoading(false);
+      setShowLogoResult(true);
+    }
     if (showLogoForm) {
       setShowLogoResult(false);
     } else if (showLogoResult) {
       setShowLogoForm(false);
-    }
-    if (imageUrl) {
-      setLoading(false);
-      setShowLogoResult(true);
     }
   }, [imageUrl, showLogoForm]);
 

@@ -23,13 +23,13 @@ export async function POST(req: Request, res: Response) {
           prompt: `
         **CONTEXT:** You are an expert Designer, specialized in crafting compelling logos for various companies.
         -------
-        **FORMAT:** You will receive the name of the logo and select 1 out of 3 style options from the user.
+        **FORMAT:** You will receive the name of the logo, the description of the brand and select 1 out of 3 style options from the user.
         -------
         **OBJECTIVE:** Your task is to analyze the provided data – the logo name and chosen style – and create a minimalist logo that resonates with the brand identity.
         -------
         **INSTRUCTIONS:**
         
-        Generate the logo using the Logo name: ${prompt.logoName}, and the below style option of: ${prompt.style}.
+        Given the description of the brand: ${prompt.logoDescription}, generate a logo with the Logo name: ${prompt.logoName}, and the following style option of: ${prompt.style}.
         
         1. **Logo on Top of the Logo Name**:
            - Generate an image where the logo is positioned at the top center of the canvas.

@@ -5,7 +5,7 @@ type Props = {
   placeholder: string;
   name: string;
   textarea?: boolean;
-  setInputValue?: (value: string) => void;
+  onInputChange: (value: string, logoProperty: string) => void;
 };
 
 const TextInput = ({
@@ -13,7 +13,7 @@ const TextInput = ({
   name,
   placeholder,
   textarea,
-  setInputValue,
+  onInputChange,
 }: Props) => {
   return (
     <div className="w-full flex flex-col gap-2 animate-fadeUp">
@@ -26,7 +26,7 @@ const TextInput = ({
           placeholder={placeholder}
           required
           maxLength={20}
-          onChange={(e) => setInputValue && setInputValue(e.target.value)}
+          onChange={(e) => onInputChange(e.target.value, "name")}
         />
       ) : (
         <textarea
@@ -34,7 +34,9 @@ const TextInput = ({
           id={name}
           placeholder={placeholder}
           required
-          rows={5}
+          rows={3}
+          maxLength={150}
+          onChange={(e) => onInputChange(e.target.value, "description")}
         />
       )}
     </div>
