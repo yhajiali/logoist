@@ -58,9 +58,9 @@ export default function Home() {
       <header className=""></header>
 
       <main className="flex flex-col items-center justify-center gap-10 divide-gray-700 px-10 py-20 w-full h-full font-mono text-sm lg:flex-row lg:divide-x lg:divide-y-0">
-        {showLogoForm && !showLogoResult && (
-          <LogoForm handleSubmit={handleSubmit} />
-        )}
+        {showLogoForm && <LogoForm handleSubmit={handleSubmit} />}
+
+        {/* Only show logo result when not fetching image data or showing logo form */}
         {showLogoResult && !loading && !showLogoForm ? (
           <LogoResult
             imageSrc={imageUrl}
