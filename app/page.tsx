@@ -14,6 +14,7 @@ export default function Home() {
   useEffect(() => {
     if (imageUrl) {
       setLoading(false);
+      setShowLogoForm(false);
       setShowLogoResult(true);
     }
   }, [imageUrl]);
