@@ -8,6 +8,7 @@ type Props = {
   logoName?: string;
   icon?: boolean;
   styleOption: number;
+  checked: boolean;
   onInputChange: (value: number, logoProperty: string) => void;
 };
 
@@ -18,14 +19,13 @@ const RadioInput = ({
   onInputChange,
   styleOption,
   icon,
+  checked,
 }: Props) => {
-  const [clicked, setClicked] = useState(false);
-
   return (
     <label
-      className={`flex ${flexDirection} items-center justify-center gap-2 min-w-full flex-1 sm:min-w-32 h-16 bg-transparent border border-gray-700 rounded-md transition duration-300 drop-shadow-md shadow-blue-400 hover:-translate-y-2 hover:text-blue-400 animate-fadeUp active:border-blue-400 hover:cursor-pointer ${
-        clicked && "border-blue-400"
-      }`}
+      className={`flex ${flexDirection} items-center justify-center gap-2 min-w-full flex-1 sm:min-w-32 h-16 bg-transparent border ${
+        checked ? "border-blue-400 text-blue-400" : "border-gray-700"
+      } rounded-md transition duration-300 drop-shadow-md shadow-blue-400 hover:-translate-y-2 hover:text-blue-400 animate-fadeUp hover:cursor-pointer hover:border-blue-400`}
       style={{ animationDelay: delay }}
     >
       <input
@@ -34,7 +34,6 @@ const RadioInput = ({
         name="logo-style"
         value={styleOption}
         onClick={() => onInputChange(styleOption, "style")} // Store style in logoData object state
-        onChange={() => (clicked ? setClicked(false) : setClicked(true))}
       />
       <Squares2X2Icon className="size-5" />
       <span className="text-sm font-semibold">

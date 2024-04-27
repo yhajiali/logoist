@@ -47,6 +47,7 @@ const LogoForm = ({ handleSubmit, logoData, setLogoData }: Props) => {
             logoName={logoData.name} // Dynamically fill in Style buttons with Logo Name inputted by the user.
             onInputChange={onInputChange}
             styleOption={1}
+            checked={logoData.style === 1}
           />
           <RadioInput
             delay="700ms"
@@ -54,12 +55,14 @@ const LogoForm = ({ handleSubmit, logoData, setLogoData }: Props) => {
             flexDirection="flex-col"
             onInputChange={onInputChange}
             styleOption={2}
+            checked={logoData.style === 2}
           />
           <RadioInput
             delay="900ms"
             icon
             onInputChange={onInputChange}
             styleOption={3}
+            checked={logoData.style === 3}
           />
         </div>
       </div>
