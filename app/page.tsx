@@ -10,6 +10,12 @@ export default function Home() {
   const [showLogoResult, setShowLogoResult] = useState(false);
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
+  const [error, setError] = useState("");
+  const [logoData, setLogoData] = useState({
+    name: "Logo Name",
+    description: "",
+    style: 1,
+  });
 
   useEffect(() => {
     if (imageUrl) {
@@ -22,35 +28,33 @@ export default function Home() {
   function handleSubmit() {
     setImageUrl("");
     console.log("handleSubmit");
+    console.log(logoData);
     setLoading(true);
     getImageData();
   }
 
   const getImageData = async () => {
     try {
-      // setLoading(true);
-      const response = await fetch("/api/replicate", {
+      const response = await fetch("/api/dalle", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           prompt: {
-            logoName: "Yusi",
-            logoDescription: "A Tech Company",
-            style: 1,
+            logoName: logoData.name,
+            logoDescription: logoData.description,
+            style: logoData.style,
           },
         }),
-        // body: JSON.stringify({ prompt: `${prompt}` })
       });
       const { imageUrl } = await response.json();
-      console.log("Image URL in the front: ", imageUrl);
+      console.log("Image URL: ", imageUrl);
       setImageUrl(imageUrl);
-      // setError('');
+      setError("");
     } catch (error) {
-      // setError(`An error occurred calling the Dall-E API: ${error}`);
+      setError(`An error occurred calling the Dall-E API: ${error}`);
     }
-    // setLoading(false);
   };
 
   return (
@@ -58,15 +62,28 @@ export default function Home() {
       <header className=""></header>
 
       <main className="flex flex-col items-center justify-center gap-10 divide-gray-700 px-10 py-20 w-full h-full font-mono text-sm lg:flex-row lg:divide-x lg:divide-y-0">
-        {showLogoForm && <LogoForm handleSubmit={handleSubmit} />}
+        {showLogoForm && (
+          <LogoForm
+            handleSubmit={handleSubmit}
+            logoData={logoData}
+            setLogoData={setLogoData}
+          />
+        )}
 
         {/* Only show logo result when not fetching image data or showing logo form */}
         {showLogoResult && !loading && !showLogoForm ? (
-          <LogoResult
-            imageSrc={imageUrl}
-            setShowLogoForm={setShowLogoForm}
-            handleSumbit={handleSubmit}
-          />
+          <>
+            <div>
+              <p>{logoData.name}</p>
+              <p>{logoData.description}</p>
+              <p>{logoData.style}</p>
+            </div>
+            <LogoResult
+              imageSrc={imageUrl}
+              setShowLogoForm={setShowLogoForm}
+              handleSumbit={handleSubmit}
+            />
+          </>
         ) : (
           loading && <Loading message="Generating Logo..." />
         )}

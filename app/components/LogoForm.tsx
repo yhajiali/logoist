@@ -7,15 +7,15 @@ import RadioInput from "./ui/RadioInput";
 
 type Props = {
   handleSubmit: () => void;
+  logoData: { name: string; description: string; style: number };
+  setLogoData: (data: {
+    name: string;
+    description: string;
+    style: number;
+  }) => void;
 };
 
-const LogoForm = ({ handleSubmit }: Props) => {
-  const [logoData, setLogoData] = useState({
-    name: "Logo Name",
-    description: "",
-    style: 1,
-  });
-
+const LogoForm = ({ handleSubmit, logoData, setLogoData }: Props) => {
   // Store logoData from User's input
   const onInputChange = (value: string | number, logoProperty: string) => {
     console.log(logoData);
