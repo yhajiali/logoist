@@ -72,18 +72,11 @@ export default function Home() {
 
         {/* Only show logo result when not fetching image data or showing logo form */}
         {showLogoResult && !loading && !showLogoForm ? (
-          <>
-            <div>
-              <p>{logoData.name}</p>
-              <p>{logoData.description}</p>
-              <p>{logoData.style}</p>
-            </div>
-            <LogoResult
-              imageSrc={imageUrl}
-              setShowLogoForm={setShowLogoForm}
-              handleSumbit={handleSubmit}
-            />
-          </>
+          <LogoResult
+            imageSrc={imageUrl}
+            setShowLogoForm={setShowLogoForm}
+            handleSumbit={handleSubmit}
+          />
         ) : (
           loading && <Loading message="Generating Logo..." />
         )}
