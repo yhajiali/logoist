@@ -35,7 +35,7 @@ export default function Home() {
 
   const getImageData = async () => {
     try {
-      const response = await fetch("/api/dalle", {
+      const response = await fetch("/api/replicate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
