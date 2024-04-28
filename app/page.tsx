@@ -14,7 +14,7 @@ export default function Home() {
   const [logoData, setLogoData] = useState({
     name: "Logo Name",
     description: "",
-    style: 1,
+    style: 0,
   });
 
   useEffect(() => {
@@ -27,7 +27,6 @@ export default function Home() {
 
   function handleSubmit() {
     setImageUrl("");
-    console.log("handleSubmit");
     console.log(logoData);
     setLoading(true);
     getImageData();
@@ -35,7 +34,7 @@ export default function Home() {
 
   const getImageData = async () => {
     try {
-      const response = await fetch("/api/replicate", {
+      const response = await fetch("/api/dalle", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -53,7 +52,8 @@ export default function Home() {
       setImageUrl(imageUrl);
       setError("");
     } catch (error) {
-      setError(`An error occurred calling the Dall-E API: ${error}`);
+      setError(`An error occurred calling the Dall-E API`);
+      setLoading(false);
     }
   };
 
@@ -81,8 +81,12 @@ export default function Home() {
           loading && <Loading message="Generating Logo..." />
         )}
 
-        {/* Display error below logo container */}
-        {/* {error && <p className={styles.error}>{error}</p>} */}
+        {/* Display error in logo container */}
+        {error && !loading && (
+          <div className="w-full max-w-3xl h-full px-4 flex justify-center items-center animate-slide-in">
+            <p className="text-center text-red-400 font-semibold ">{error}</p>
+          </div>
+        )}
       </main>
 
       <footer>

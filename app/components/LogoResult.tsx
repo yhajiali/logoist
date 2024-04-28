@@ -22,7 +22,7 @@ const LogoResult: React.FC<Props> = ({
       {/* Back to Logo Form */}
       <button
         type="button"
-        className="absolute top-2 left-2 group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:text-blue-400 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 flex flex-col md:flex-row justify-center items-center gap-2 text-xs"
+        className="group self-start rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:text-blue-400 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 flex flex-col md:flex-row justify-center items-center gap-2 text-xs"
         onClick={() => setShowLogoForm(true)}
       >
         <span className="transition-transform group-hover:-translate-x-1 motion-reduce:transform-none">
@@ -38,17 +38,17 @@ const LogoResult: React.FC<Props> = ({
         width={350}
         height={350}
       />
-      <div className="flex justify-center items-center gap-4">
-        <a href={imageSrc} download>
-          <button
-            type="button"
-            className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:text-blue-400 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 flex flex-col md:flex-row justify-center items-center gap-2"
-          >
-            Download
-            <span className="transition-transform group-hover:-translate-y-1 motion-reduce:transform-none">
-              <ArrowDownTrayIcon className="size-5" />
-            </span>
-          </button>
+      <div className="flex flex-col md:flex-row justify-center items-center gap-4">
+        <a
+          href={imageSrc}
+          className="w-full md:w-auto group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:text-blue-400 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 flex flex-col md:flex-row justify-center items-center gap-2"
+          target="_blank"
+          download
+        >
+          Download
+          <span className="transition-transform group-hover:-translate-y-1 motion-reduce:transform-none">
+            <ArrowDownTrayIcon className="size-5" />
+          </span>
         </a>
         <button
           type="button"

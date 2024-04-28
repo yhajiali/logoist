@@ -18,7 +18,6 @@ type Props = {
 const LogoForm = ({ handleSubmit, logoData, setLogoData }: Props) => {
   // Store logoData from User's input
   const onInputChange = (value: string | number, logoProperty: string) => {
-    console.log(logoData);
     setLogoData({ ...logoData, [logoProperty]: value });
   };
 
