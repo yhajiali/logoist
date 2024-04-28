@@ -22,7 +22,14 @@ const LogoForm = ({ handleSubmit, logoData, setLogoData }: Props) => {
   };
 
   return (
-    <form className="w-full max-w-3xl h-full flex flex-col items-center justify-center gap-6">
+    <form
+      className="w-full max-w-3xl h-full flex flex-col items-center justify-center gap-6"
+      onSubmit={(e) => {
+        // Prevent default form submission behavior
+        e.preventDefault();
+        handleSubmit();
+      }}
+    >
       <TextInput
         label="Enter Your Logo Name"
         placeholder="Logo Name"
@@ -67,9 +74,8 @@ const LogoForm = ({ handleSubmit, logoData, setLogoData }: Props) => {
       </div>
 
       <button
-        type="button"
+        type="submit"
         className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:text-blue-400 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 flex gap-2"
-        onClick={() => handleSubmit()}
       >
         Generate Logo{" "}
         <span className="transition-transform group-hover:translate-x-1 motion-reduce:transform-none">

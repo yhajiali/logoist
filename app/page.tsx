@@ -52,8 +52,10 @@ export default function Home() {
       setImageUrl(imageUrl);
       setError("");
     } catch (error) {
-      setError(`An error occurred calling the Dall-E API`);
-      setLoading(false);
+      setTimeout(() => {
+        setError(`An error occurred calling the Dall-E API`);
+        setLoading(false);
+      }, 3000);
     }
   };
 
@@ -75,7 +77,8 @@ export default function Home() {
           <LogoResult
             imageSrc={imageUrl}
             setShowLogoForm={setShowLogoForm}
-            handleSumbit={handleSubmit}
+            handleSubmit={handleSubmit}
+            error={error}
           />
         ) : (
           loading && <Loading message="Generating Logo..." />

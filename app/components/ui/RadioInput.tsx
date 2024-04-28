@@ -34,6 +34,7 @@ const RadioInput = ({
         name="logo-style"
         value={styleOption}
         onClick={() => onInputChange(styleOption, "style")} // Store style in logoData object state
+        required
       />
       <Squares2X2Icon className="size-5" />
       <span className="text-sm font-semibold">

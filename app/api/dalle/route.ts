@@ -28,21 +28,23 @@ export async function POST(req: Request, res: Response) {
       -------
       FORMAT: You will receive the name of the logo, the description of the brand and a style option from the user.
       -------
-      OBJECTIVE: Your task is to analyze the provided data – the logo name, description and chosen style – and create a minimalist logo that resonates with the brand identity.
+      OBJECTIVE: Your task is to analyze the provided data – the logo name, description and chosen style – and create a minimalistic logo design that resonates with the brand identity.
       -------
-      INSTRUCTIONS: Given the description of the brand: ${prompt.logoDescription}, the Logo name: ${prompt.logoName}, and the style option of: ${prompt.style} below.
+      INSTRUCTIONS: Given the description of the brand: ${prompt.logoDescription}, the Logo name: ${prompt.logoName}, and the style option of: ${prompt.style} below. 
       
-     if the style option: "${prompt.style}" matches one of the following then generate a logo using that specific instruction only: 
+      CREATE A MINIMALISTIC LOGO WITH A COMPLETELY BLACKED OUT CANVAS. DO NOT INCLUDE ANY OTHER IMAGE, DESIGN OR TEXT OTHER THAN THE LOGO ICON AND THE LOGO NAME: "${prompt.logoName} ITSELF".
+      
+     if the style option: "${prompt.style}" matches one of the following then generate the logo using that specific instruction only: 
 
      1. Side-by-Side Logo and Name:
-      - Create an image where the logo is positioned on the left side of the canvas.
-      - Place the logo name next to the logo, aligned vertically with the center of the logo.
+      - Generate a logo with the logo icon positioned on the left side of the canvas.
+      - Place the logo name next to the logo icon, aligned vertically with the center of the logo.
       - Adjust the size of the logo and the logo name to ensure that they fit within the canvas width without overlapping.
       - Use whitespace or background elements to separate the logo and the logo name visually.
       - Experiment with different arrangements and alignments to find the most visually appealing composition.
       -------
       2. Logo on Top of the Logo Name:
-      - Generate an image where the logo is positioned at the top center of the canvas.
+      - Generate a logo with the logo icon positioned at the top center of the canvas.
       - Place the logo name directly below the logo, centered horizontally.
       - Ensure that both the logo and the logo name are proportionally sized to maintain visual balance.
       - Apply complementary colors to the logo and the logo name to enhance readability and aesthetic appeal.
