@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import TextInput from "./ui/TextInput";
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 import RadioInput from "./ui/RadioInput";
+import { useUser, useClerk } from '@clerk/nextjs';
 
 type Props = {
   handleSubmit: () => void;
@@ -21,12 +22,21 @@ const LogoForm = ({ handleSubmit, logoData, setLogoData }: Props) => {
     setLogoData({ ...logoData, [logoProperty]: value });
   };
 
+  const { user } = useUser();
+  const { openSignUp } = useClerk();
+
   return (
     <form
       className="w-full max-w-3xl h-full flex flex-col items-center justify-center gap-6"
       onSubmit={(e) => {
         // Prevent default form submission behavior
         e.preventDefault();
+
+        if (!user){
+          openSignUp();
+          return;
+        }
+
         handleSubmit();
       }}
     >
