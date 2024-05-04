@@ -1,6 +1,5 @@
+import React from "react";
 import { Squares2X2Icon } from "@heroicons/react/24/outline";
-
-import React, { useState } from "react";
 
 type Props = {
   delay: string;

@@ -1,10 +1,9 @@
 "use client";
-
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import TextInput from "./ui/TextInput";
-import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 import RadioInput from "./ui/RadioInput";
-import { useUser, useClerk } from '@clerk/nextjs';
+import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
+import { useUser, useClerk } from "@clerk/nextjs";
 
 type Props = {
   handleSubmit: () => void;
@@ -14,9 +13,20 @@ type Props = {
     description: string;
     style: number;
   }) => void;
+  loading: boolean;
 };
 
-const LogoForm = ({ handleSubmit, logoData, setLogoData }: Props) => {
+const LogoForm = ({ handleSubmit, logoData, setLogoData, loading }: Props) => {
+  useEffect(() => {
+    // Reset logoData to initial state onmount
+    setLogoData({
+      ...logoData,
+      name: "",
+      description: "",
+      style: 0,
+    });
+  }, []);
+
   // Store logoData from User's input
   const onInputChange = (value: string | number, logoProperty: string) => {
     setLogoData({ ...logoData, [logoProperty]: value });
@@ -27,12 +37,14 @@ const LogoForm = ({ handleSubmit, logoData, setLogoData }: Props) => {
 
   return (
     <form
-      className="w-full max-w-3xl h-full flex flex-col items-center justify-center gap-6"
+      className={`${
+        loading ? "hidden lg:flex" : "flex" // Hide form in small screens
+      } w-full max-w-3xl h-full flex-col items-center justify-center gap-6`}
       onSubmit={(e) => {
         // Prevent default form submission behavior
         e.preventDefault();
 
-        if (!user){
+        if (!user) {
           openSignUp();
           return;
         }
