@@ -13,9 +13,15 @@ import { UserCircleIcon } from "@heroicons/react/24/outline";
 const Header = () => {
   return (
     <header className="flex justify-between items-center w-full max-w-7xl py-2 px-6">
-      <div className="block md:flex items-end gap-3">
-        <Image src="/Logo.PNG" alt="Logoist" width="65" height="65" />
-        {/* TODO: find better logo */}
+      <div className="flex items-center gap-2">
+        <Image
+          src="/logo.png"
+          alt="Logoist"
+          width="45"
+          height="45"
+          className="rounded-full drop-shadow-lg"
+        />
+        <span className="font-mono text-sm">Logoist</span>
       </div>
 
       {/* Display on mobile devices */}

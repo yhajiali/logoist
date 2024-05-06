@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Logoist",
   description:
-    "LogoAI is a cutting-edge logo design service that creates unique, custom logos tailored to your brand's identity. Our streamlined process ensures a seamless experience, providing you with a distinctive logo that sets your brand apart in today's competitive market.",
+    "Logoist is a cutting-edge logo design service that creates unique, minimalistic logos tailored to your brand's identity. Our streamlined process ensures a seamless experience, providing you with a distinctive logo that sets your brand apart in today's competitive market.",
 };
 
 export default function RootLayout({
@@ -28,7 +28,7 @@ export default function RootLayout({
     >
       <html lang="en">
         <body
-          className={`${inter.className} h-screen w-screen flex flex-col justify-between items-center`}
+          className={`${inter.className} h-svh w-screen flex flex-col justify-between items-center`}
         >
           <Header />
           {children}

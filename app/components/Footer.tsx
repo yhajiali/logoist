@@ -24,15 +24,6 @@ const Footer = ({}: Props) => {
           ,{" "}
           <a
             className="text-blue-400 underline hover:text-blue-300"
-            href="https://www.linkedin.com/in/aleksandr-balkhanov-56221b289/"
-            target="_blank"
-            rel="nooppener noreferrer"
-          >
-            Alexsandr
-          </a>
-          ,{" "}
-          <a
-            className="text-blue-400 underline hover:text-blue-300"
             href="https://www.linkedin.com/in/elberd-galaiev-8a81351b2/"
             target="_blank"
             rel="nooppener noreferrer"
@@ -42,11 +33,11 @@ const Footer = ({}: Props) => {
           and{" "}
           <a
             className="text-blue-400 underline hover:text-blue-300"
-            href="http://linkedin.com/in/"
+            href="https://www.linkedin.com/in/shakhzodbek-sabirov-3b0818221"
             target="_blank"
             rel="nooppener noreferrer"
           >
-            Nicholas
+            Shakhzodbek
           </a>
         </span>
 
