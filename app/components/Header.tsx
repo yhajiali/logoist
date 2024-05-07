@@ -15,7 +15,7 @@ const Header = () => {
     <header className="flex justify-between items-center w-full max-w-7xl py-2 px-6">
       <div className="flex items-center gap-2">
         <Image
-          src="/logo.png"
+          src="/Logo.PNG"
           alt="Logoist"
           width="45"
           height="45"
