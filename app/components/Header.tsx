@@ -19,7 +19,7 @@ const Header = () => {
           alt="Logoist"
           width="45"
           height="45"
-          className="rounded-full drop-shadow-lg"
+          className="drop-shadow-lg"
         />
         <span className="font-mono text-sm">Logoist</span>
       </div>
