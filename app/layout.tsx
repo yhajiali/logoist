@@ -6,6 +6,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,13 +27,15 @@ export default function RootLayout({
         baseTheme: dark,
       }}
     >
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body
-          className={`${inter.className} h-svh w-screen flex flex-col justify-between items-center`}
+          className={`${inter.className} h-svh w-screen flex flex-col justify-between items-center dark:bg-black`}
         >
-          <Header />
-          {children}
-          <Footer />
+          <Providers>
+            <Header />
+            {children}
+            <Footer />
+          </Providers>
           <Analytics />
         </body>
       </html>

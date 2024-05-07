@@ -1,69 +1,53 @@
 "use client";
-import React, { useState } from "react";
-import { LuMoon, LuGithub, LuSun } from "react-icons/lu";
+
+import React from "react";
+import { LuGithub } from "react-icons/lu";
+import { ThemeSwitcher } from "./ui/ThemeSwitcher";
 
 type Props = {};
 
-const Footer = ({}: Props) => {
-  const [themeMode, setThemeMode] = useState("dark");
+const authors = [
+  {
+    name: "yhajiali",
+    link: "http://linkedin.com/in/yhajiali",
+  },
+  {
+    name: "Elberd",
+    link: "http://linkedin.com/in/elberd-galaiev-8a81351b2/",
+  },
+  {
+    name: "Shakhzodbek",
+    link: "http://linkedin.com/in/shakhzodbek-sabirov-3b0818221",
+  },
+];
 
+const Footer = ({}: Props) => {
   return (
     <footer className="w-full px-4 py-4 flex flex-col gap-4 justify-center items-center border border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit md:py-6">
-      {/* Authors */}
       <div className="w-full max-w-7xl flex flex-col gap-4 justify-between text-center lg:flex-row font-mono text-sm">
+        {/* Authors */}
         <span>
           Built by{" "}
-          <a
-            className="text-blue-400 underline hover:text-blue-300"
-            href="http://linkedin.com/in/yhajiali"
-            target="_blank"
-            rel="nooppener noreferrer"
-          >
-            yhajiali
-          </a>
-          ,{" "}
-          <a
-            className="text-blue-400 underline hover:text-blue-300"
-            href="https://www.linkedin.com/in/elberd-galaiev-8a81351b2/"
-            target="_blank"
-            rel="nooppener noreferrer"
-          >
-            Elberd
-          </a>{" "}
-          and{" "}
-          <a
-            className="text-blue-400 underline hover:text-blue-300"
-            href="https://www.linkedin.com/in/shakhzodbek-sabirov-3b0818221"
-            target="_blank"
-            rel="nooppener noreferrer"
-          >
-            Shakhzodbek
-          </a>
+          {authors.map((author, index) => (
+            <>
+              <a
+                className="text-blue-400 underline hover:text-blue-300"
+                href={author.link}
+                target="_blank"
+              >
+                {author.name}
+              </a>
+              {index !== authors.length - 1 && ", "}
+            </>
+          ))}
         </span>
 
         {/* Buttons */}
-        <div className="flex justify-center divide-x divide-gray-500 dark:divide-white">
-          <button
-            className="px-2"
-            onClick={() =>
-              themeMode === "dark"
-                ? setThemeMode("light")
-                : setThemeMode("dark")
-            }
-          >
-            {themeMode === "dark" ? (
-              <LuSun className="size-6 hover:fill-white hover:scale-110" />
-            ) : (
-              <LuMoon className="size-6 hover:fill-white hover:scale-110" />
-            )}
-          </button>
-          <a
-            href="https://github.com/yhajiali/logoai"
-            target="_blank"
-            rel="nooppener noreferrer"
-            className=" px-2"
-          >
-            <LuGithub className="size-6 hover:fill-white hover:scale-110" />
+        <div className="flex justify-center items-center divide-x divide-gray-500 dark:divide-white gap-2">
+          <ThemeSwitcher />
+
+          <a href="https://github.com/yhajiali/logoist" target="_blank">
+            <LuGithub className="size-6 hover:fill-black dark:hover:fill-white hover:scale-110 mx-2" />
           </a>
         </div>
       </div>
