@@ -46,11 +46,27 @@ export default function Home() {
           },
         }),
       });
-      const { imageUrl } = await response.json();
-      console.log("Image URL: ", imageUrl);
-      setImageUrl(imageUrl);
-      setError("");
+
+      if (!response.ok) {
+        const error = await response.json();
+        if (response.status === 429) {
+          setTimeout(() => {
+            setError(
+              `${error.error.message}. Please try again later.`
+            );
+            setLoading(false);
+          }, 3000);
+          return;
+        }
+      } else {
+        const { imageUrl } = await response.json();
+        console.log("Image URL: ", imageUrl);
+        setImageUrl(imageUrl);
+        setError("");
+      }
+
     } catch (error) {
+      console.log(error)
       setTimeout(() => {
         setError(`An error occurred calling the Dall-E API`);
         setLoading(false);
@@ -70,12 +86,12 @@ export default function Home() {
       )}
 
       {/* Only show logo result when not fetching image data or showing logo form */}
-      {showLogoResult && !loading && !showLogoForm ? (
+      {showLogoResult && !loading && !error && !showLogoForm ? (
         <LogoResult
           imageSrc={imageUrl}
           setShowLogoForm={setShowLogoForm}
           handleSubmit={handleSubmit}
-          error={error}
+          
         />
       ) : (
         loading && <Loading message="Generating Logo..." />

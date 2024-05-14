@@ -8,14 +8,12 @@ import {
 
 type Props = {
   imageSrc: string;
-  error: string;
   setShowLogoForm: (set: boolean) => void;
   handleSubmit: () => void;
 };
 
 const LogoResult: React.FC<Props> = ({
   imageSrc,
-  error,
   setShowLogoForm,
   handleSubmit,
 }) => {
@@ -33,7 +31,6 @@ const LogoResult: React.FC<Props> = ({
         Edit Logo Details
       </button>
 
-      {!error ? (
         <Image
           src={imageSrc}
           alt="Your generated Logo"
@@ -41,13 +38,7 @@ const LogoResult: React.FC<Props> = ({
           width={350}
           height={350}
         />
-      ) : (
-        // Display error in logo container
-        <div className="w-full max-w-3xl h-full px-4 flex justify-center items-center animate-slide-in">
-          <p className="text-center text-red-400 font-semibold ">{error}</p>
-        </div>
-      )}
-      <div className="flex flex-col md:flex-row justify-center items-center gap-4">
+      <div className="flex flex-colaa md:flex-row justify-center items-center gap-4">
         <a
           href={imageSrc}
           className="w-full md:w-auto group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:text-blue-400 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 flex flex-col md:flex-row justify-center items-center gap-2"
