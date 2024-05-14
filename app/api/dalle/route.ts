@@ -39,10 +39,10 @@ export async function POST(req: NextRequest) {
   const body = await req.text();
   const { prompt } = JSON.parse(body);
 
-    try {
-      const response = await openai.images.generate({
-        model: "dall-e-3",
-        prompt: `CONTEXT: You are an expert Designer, specialized in crafting compelling logos for various companies.
+  try {
+    const response = await openai.images.generate({
+      model: "dall-e-3",
+      prompt: `CONTEXT: You are an expert Designer, specialized in crafting compelling logos for various companies.
         -------
         FORMAT: You will receive the name of the logo, the description of the brand and a style option from the user.
         -------
@@ -73,10 +73,10 @@ export async function POST(req: NextRequest) {
         - Experiment with different background colors or patterns to complement the logo icon and make it stand out.
         - Apply visual effects or embellishments to enhance the appearance of the logo icon, such as gradients, shadows, or textures.
         - Ensure that the image resolution is high enough to maintain the clarity and detail of the logo icon, especially if it contains intricate elements.`,
-        n: 1,
-        size: "1024x1024",
-      });
-      const imageUrl = response?.data?.[0]?.url;
+      n: 1,
+      size: "1024x1024",
+    });
+    const imageUrl = response?.data?.[0]?.url;
     console.log("imageUrl:", imageUrl);
     return NextResponse.json({ imageUrl });
   } catch (error: any) {
@@ -85,4 +85,4 @@ export async function POST(req: NextRequest) {
       status: 500,
     });
   }
-};
+}

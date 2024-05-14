@@ -34,6 +34,7 @@ const Footer = ({}: Props) => {
                 className="text-blue-400 underline hover:text-blue-300"
                 href={author.link}
                 target="_blank"
+                key={index}
               >
                 {author.name}
               </a>
