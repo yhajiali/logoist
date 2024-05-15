@@ -26,22 +26,21 @@ const Footer = ({}: Props) => {
     <footer className="w-full px-4 py-4 flex flex-col gap-4 justify-center items-center border border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit md:py-6">
       <div className="w-full max-w-7xl flex flex-col gap-4 justify-between text-center lg:flex-row font-mono text-sm">
         {/* Authors */}
-        <span>
+        <p>
           Built by{" "}
           {authors.map((author, index) => (
-            <>
+            <span key={author.name}>
               <a
                 className="text-blue-400 underline hover:text-blue-300"
                 href={author.link}
                 target="_blank"
-                key={index}
               >
                 {author.name}
               </a>
               {index !== authors.length - 1 && ", "}
-            </>
+            </span>
           ))}
-        </span>
+        </p>
 
         {/* Buttons */}
         <div className="flex justify-center items-center divide-x divide-gray-500 dark:divide-white gap-2">

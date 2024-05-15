@@ -14,9 +14,16 @@ type Props = {
     style: number;
   }) => void;
   loading: boolean;
+  error: string;
 };
 
-const LogoForm = ({ handleSubmit, logoData, setLogoData, loading }: Props) => {
+const LogoForm = ({
+  handleSubmit,
+  logoData,
+  setLogoData,
+  loading,
+  error,
+}: Props) => {
   useEffect(() => {
     // Reset logoData to initial state onmount
     setLogoData({
@@ -38,7 +45,7 @@ const LogoForm = ({ handleSubmit, logoData, setLogoData, loading }: Props) => {
   return (
     <form
       className={`${
-        loading ? "hidden lg:flex" : "flex" // Hide form in small screens
+        loading || error ? "hidden lg:flex" : "flex" // Hide form in small screens
       } w-full max-w-3xl h-full flex-col items-center justify-center gap-6`}
       onSubmit={(e) => {
         // Prevent default form submission behavior

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import {
@@ -11,14 +12,16 @@ import { dark } from "@clerk/themes";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
 
 const Header = () => {
+  const remainingTokens = "";
+
   return (
     <header className="flex justify-between items-center w-full max-w-7xl py-2 px-6">
       <div className="flex items-center gap-2">
         <Image
           src="/Logo.PNG"
-          alt="Logoist"
-          width="45"
-          height="45"
+          alt="Logo"
+          width={45}
+          height={45}
           className="drop-shadow-lg"
         />
         <span className="font-mono text-sm">Logoist</span>

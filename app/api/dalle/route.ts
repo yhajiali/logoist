@@ -18,9 +18,7 @@ export async function POST(req: NextRequest) {
   }
 
   const ip = req.ip ?? "127.0.0.1";
-  const { success, pending, limit, reset, remaining } = await ratelimit.limit(
-    ip
-  );
+  const { success, limit, reset, remaining } = await ratelimit.limit(ip);
 
   if (!success) {
     return NextResponse.json(
@@ -78,7 +76,7 @@ export async function POST(req: NextRequest) {
     });
     const imageUrl = response?.data?.[0]?.url;
     console.log("imageUrl:", imageUrl);
-    return NextResponse.json({ imageUrl });
+    return NextResponse.json({ imageUrl, remaining });
   } catch (error: any) {
     console.error(error);
     return new Response(error?.message || error?.toString(), {
