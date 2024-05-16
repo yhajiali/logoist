@@ -13,7 +13,7 @@ const authors = [
   },
   {
     name: "Elberd",
-    link: "http://linkedin.com/in/elberd-galaiev-8a81351b2/",
+    link: "http://linkedin.com/in/elberd-galaiev-8a81351b2",
   },
   {
     name: "Shakhzodbek",
