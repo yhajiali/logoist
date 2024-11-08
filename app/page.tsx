@@ -77,7 +77,7 @@ export default function Home() {
   return (
     <>
       {/* Display remaining tokens once first image request is made */}
-      {remainingTokens && remainingTokens < 5 ? (
+      {remainingTokens && remainingTokens < 3 ? (
         <span className="m-4 flex items-center text-sm text-blue-400 font-semibold animate-fadeUp">
           Remaining Tokens
           <CircleStackIcon className="size-5" />: {remainingTokens}

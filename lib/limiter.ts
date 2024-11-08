@@ -8,7 +8,7 @@ const redis = new Redis({
 
 export const ratelimit = new Ratelimit({
   redis: redis,
-  limiter: Ratelimit.slidingWindow(5, "86400 s"), // 5 requests per day per user (IP) 86400 = one day
+  limiter: Ratelimit.slidingWindow(3, "86400 s"), // 3 requests per day per user (IP) 86400 = one day
   ephemeralCache: new Map(),
   analytics: true,
 });

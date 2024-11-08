@@ -23,7 +23,7 @@ const authors = [
 
 const Footer = ({}: Props) => {
   return (
-    <footer className="w-full px-4 py-4 flex flex-col gap-4 justify-center items-center border border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit md:py-6">
+    <footer className="w-full px-4 py-4 flex flex-col gap-4 justify-center items-center border-t border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit md:py-6">
       <div className="w-full max-w-7xl flex flex-col gap-4 justify-between text-center lg:flex-row font-mono text-sm">
         {/* Authors */}
         <p>

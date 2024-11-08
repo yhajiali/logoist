@@ -44,11 +44,11 @@ export async function POST(req: NextRequest) {
         -------
         FORMAT: You will receive the name of the logo, the description of the brand and a style option from the user.
         -------
-        OBJECTIVE: Your task is to analyze the provided data – the logo name, description and chosen style – and create a minimalistic logo design that resonates with the brand identity.
+        OBJECTIVE: Your task is to analyze the provided data – the logo name, description and chosen style – and create JUST ONE SPECIFIC aND minimalistic logo design that resonates with the brand identity.
         -------
         INSTRUCTIONS: Given the description of the brand: ${prompt.logoDescription}, the Logo name: ${prompt.logoName}, and the style option of: ${prompt.style} below. 
         
-        CREATE A MINIMALISTIC LOGO WITH A COMPLETELY BLACKED OUT CANVAS. DO NOT INCLUDE ANY OTHER IMAGE, DESIGN OR TEXT OTHER THAN THE LOGO ICON AND THE LOGO NAME: "${prompt.logoName}" ITSELF.
+        CREATE A MINIMALISTIC LOGO WITH A COMPLETELY BLACKED OUT CANVAS. ONLY CREATE ONE LOGO, DO NOT INCLUDE ANY OTHER IMAGE, DESIGN OR TEXT OTHER THAN THE LOGO NAME IF PROVIDED.
         
        if the style option: "${prompt.style}" matches one of the following then generate the logo using that specific instruction only: 
   
